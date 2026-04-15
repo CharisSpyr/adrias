@@ -1,53 +1,133 @@
+/* =========================
+   GLOBAL BACKGROUND
+========================= */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
 
-  /* BACKGROUND IMAGE */
   background: url("background.jpg") no-repeat center center/cover;
-  height: 100vh;
+  min-height: 100vh;
+
+  position: relative;
 }
 
-/* Dark overlay for readability */
+/* dark overlay */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
 }
 
+/* =========================
+   HEADER (GLASS EFFECT)
+========================= */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  align-items: center;
+
+  padding: 15px 25px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  z-index: 10;
 }
 
+/* =========================
+   LOGO IMAGE
+========================= */
+.logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* =========================
+   TITLE (ANIMATED)
+========================= */
 .logo {
+  font-size: 3rem;
   margin: 0;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeSlideIn 1.2s ease forwards;
 }
 
+/* animation keyframes */
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
+
+  position: relative;
+  z-index: 1;
 }
 
+/* =========================
+   MENU (GLASS CARD)
+========================= */
 .menu {
   display: flex;
   flex-direction: column;
   gap: 20px;
   text-align: center;
+
+  padding: 40px 60px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+/* menu links */
 .menu a {
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
-  transition: 0.3s;
+
+  transition: 0.3s ease;
 }
 
 .menu a:hover {
   color: #00c3ff;
+  transform: scale(1.05);
+}
+
+/* =========================
+   OPTIONAL BUTTON STYLE
+========================= */
+#theme-toggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
